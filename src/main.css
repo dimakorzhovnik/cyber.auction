@@ -242,7 +242,7 @@ span.right-input{
     display: flex;
     color: #fff;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-items: center;
     width: 100%;
     align-items: center;
@@ -259,14 +259,15 @@ span.right-input{
     display: inline-block;
     margin-bottom: 10px;
     color: #3ab793;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .indicator-value {
     display: inline-block;
     margin-bottom: 16px;
     color: #3ab793;
-    font-size: 20px;
+    font-size: 18px;
+    text-align: center;
 }
 
 .container-card {
@@ -407,4 +408,18 @@ span.right-input{
     justify-content: space-around;
     flex-grow: 1;
     margin-right: 15px;
+}
+
+.margin {
+    margin: 0 10px;
+}
+
+.cont-btn{
+    margin-bottom: 10px;
+    position: absolute;
+    z-index: 1;
+}
+
+.cont-dinam {
+    width: 100%;
 }

@@ -5,42 +5,37 @@ export class Table extends Component {
         return (
             <div className='table'>
                 <div className='table-header-rows'>
-                    <div>Q1</div>
-                    <div>Q2</div>
-                    <div>Q3</div>
-                    <div>Q4</div>
+                    <div>TX id</div>
+                    <div>ATOMs</div>
+                    <div>GCYB estimation</div>
+                    <div>Price</div>
                 </div>
                 <div className='table-body'>
                 <div className='table-rows'>
-                    <div>Joyce Ming</div>
-                    <div>$200</div>
-                    <div>$35</div>
-                    <div>Andy</div>
+                    <div>DA6F26DNDFJN</div>
+                    <div>20</div>
+                    <div>5</div>
+                    <div>2</div>
                 </div>
                 <div className='table-rows'>
-                    <div>Joyce Ming</div>
-                    <div>$200</div>
-                    <div>$35</div>
-                    <div>Andy</div>
+                    <div>DA6F26DNDFJN</div>
+                    <div>20</div>
+                    <div>5</div>
+                    <div>2</div>
                 </div>
                 <div className='table-rows'>
-                    <div>Joyce Ming</div>
-                    <div>$200</div>
-                    <div>$35</div>
-                    <div>Andy</div>
+                    <div>DA6F26DNDFJN</div>
+                    <div>20</div>
+                    <div>5</div>
+                    <div>2</div>
                 </div>
                 <div className='table-rows'>
-                    <div>Joyce Ming</div>
-                    <div>$200</div>
-                    <div>$35</div>
-                    <div>Andy</div>
+                    <div>DA6F26DNDFJN</div>
+                    <div>20</div>
+                    <div>5</div>
+                    <div>2</div>
                 </div>
-                <div className='table-rows'>
-                    <div>Joyce Ming</div>
-                    <div>$200</div>
-                    <div>$35</div>
-                    <div>Andy</div>
-                </div>
+             
                 </div>
                 
             </div>

@@ -126,7 +126,8 @@ export class Dinamics extends Component {
           color: '#fff',
           tickfont: {
             color: '#36d6ae'
-          }
+          },
+          zerolinecolor: '#000'
         },
         xaxis: {
           title: {
@@ -137,7 +138,7 @@ export class Dinamics extends Component {
           tickfont: {
             color: '#36d6ae'
           },
-          zeroline: false
+          zerolinecolor: '#000'
         },
         zaxis: {
           title: {
@@ -148,7 +149,7 @@ export class Dinamics extends Component {
           tickfont: {
             color: '#36d6ae'
           },
-          zeroline: false
+          zerolinecolor: '#000'
         },
         aspectratio: {
           x: 2,
@@ -161,8 +162,8 @@ export class Dinamics extends Component {
           eye
         }
       },
-      // width: 550,
-      // height: 500,
+      width: 1000,
+      height: 500,
       margin: {
         l: 0,
         r: 0,
@@ -176,16 +177,20 @@ export class Dinamics extends Component {
       scrollZoom: false,
       responsive: true
     };
+    
+    const Btn = () => (
+      <div className='cont-btn'>
+        <button className='btn margin' onClick={this.state1}>General view</button>
+        <button className='btn margin' onClick={this.state2}>ATOMs / %</button>
+        <button className='btn margin' onClick={this.state3}>ATOMs / discount</button>
+    </div>
+    )
 
     return (
-      <div>
-        <div>
-          <button onClick={this.state1}>1</button>
-          <button onClick={this.state2}>2</button>
-          <button onClick={this.state3}>3</button>
-        </div>
+<div>
+  <Btn />
         <Plotly data={[data]} layout={layout} config={config} />
-      </div>
+        </div>
     );
   }
 }
