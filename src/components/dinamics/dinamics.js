@@ -6,15 +6,32 @@ export class Dinamics extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      activebtn: 'general',
+      data: {
+        type: 'scatter3d',
+        mode: 'lines',
+        x,
+        y,
+        z,
+        line: {
+          width: 6,
+          color: '#36d6ae'
+        },
+        hovertemplate:
+          'TCYB allocated: %{x: .2f}%<br>' +
+          'ATOMs contributed: %{y}<br>' +
+          'Personal discount: %{z:.2f%}%<br>' +
+          '<extra></extra>'
+      },
       center: {
         x: 0,
         y: 0,
         z: 0
       },
       eye: {
-        x: 0.57,
+        x: 1,
         y: 0,
-        z: -5.53
+        z: -5
       },
       up: {
         x: 0,
@@ -26,87 +43,87 @@ export class Dinamics extends Component {
 
   state1 = () =>
     this.setState({
-      center: {
-        x: 0,
-        y: 0,
-        z: 0
-      },
-      eye: {
-        x: 0.57,
-        y: 0,
-        z: -5.53
-      },
-      up: {
-        x: 0,
-        y: 0,
-        z: 1
+      activebtn: 'general',
+      data: {
+        type: 'scatter3d',
+        mode: 'lines',
+        x,
+        y,
+        z,
+        line: {
+          width: 4,
+          color: '#36d6ae'
+        },
+        hovertemplate:
+          'TCYB allocated: %{x: .2f}%<br>' +
+          'ATOMs contributed: %{y}<br>' +
+          'Personal discount: %{z:.2f%}%<br>' +
+          '<extra></extra>'
       }
     });
 
   state2 = () =>
     this.setState({
-      center: {
-        x: 0,
-        y: 0,
-        z: 0
-      },
-      eye: {
-        x: 0,
-        y: 3,
-        z: 0
-      },
-      up: {
-        x: 0,
-        y: 0,
-        z: -5
+      activebtn: 'share',
+      data: {
+        type: 'scatter',
+        mode: 'lines+points',
+        x,
+        y: z,
+        line: {
+          width: 4,
+          color: '#36d6ae'
+        },
+        hovertemplate:
+          'TCYB allocated: %{x: .2f}%' + '<br>Personal discount: %{y: .2f%}%'+
+          '<extra></extra>'
       }
     });
 
   state3 = () =>
     this.setState({
-      center: {
-        x: 0,
-        y: 0,
-        z: 0
-      },
-      eye: {
-        x: 3,
-        y: 0,
-        z: 0
-      },
-      up: {
-        x: 0,
-        y: 0,
-        z: -5
+      activebtn: 'discount',
+      data: {
+        type: 'scatter',
+        x: y,
+        y: z,
+        line: {
+          width: 6,
+          color: '#36d6ae'
+        },
+        hovertemplate:
+          'ATOMs contributed: %{x}<br>' +
+          'Personal discount: %{y:.2f%}%<br>'+
+          '<extra></extra>'
       }
     });
 
   render() {
-    const { center, eye, up } = this.state;
+    const { center, eye, up, activebtn, data } = this.state;
 
-    const data = {
-      type: 'scatter3d',
-      mode: 'lines',
-      x,
-      y,
-      z,
-      line: {
-        width: 6,
-        color: '#36d6ae'
-      },
-      hovertemplate:
-        'TCYB allocated: %{x: .2f}%<br>' +
-        'ATOMs contributed: %{y}<br>' +
-        'Personal discount: %{z:.2f%}%<br>' +
-        '<extra></extra>'
-      //   marker: {
-      //     size: 5,
-      //     color: '#fff',
-      //     colorscale: "#fff",
-      //     // cmin: -20,
-      //     // cmax: 50
-      //   }
-    };
+    // const data = {
+    //   type: 'scatter',
+    //   mode: 'lines',
+    //   // x,
+    //   y,
+    //   z,
+    //   line: {
+    //     width: 6,
+    //     color: '#36d6ae'
+    //   },
+    //   hovertemplate:
+    //     'TCYB allocated: %{x: .2f}%<br>' +
+    //     'ATOMs contributed: %{y}<br>' +
+    //     'Personal discount: %{z:.2f%}%<br>' +
+    //     '<extra></extra>'
+    //   //   marker: {
+    //   //     size: 5,
+    //   //     color: '#fff',
+    //   //     colorscale: "#fff",
+    //   //     // cmin: -20,
+    //   //     // cmax: 50
+    //   //   }
+    // };
 
     const layout = {
       paper_bgcolor: '#000',
@@ -116,6 +133,26 @@ export class Dinamics extends Component {
         font: {
           color: '#fff'
         }
+      },
+      yaxis: {
+        title: {
+          text: 'ATOM'
+        },
+        gridcolor: '#000',
+        color: '#fff',
+        zerolinecolor: '#dedede'
+      },
+      xaxis: {
+        autotick: false,
+        title: {
+          text: '%'
+        },
+        gridcolor: '#000',
+        color: '#fff',
+        tickfont: {
+          color: '#36d6ae'
+        },
+        zerolinecolor: '#dedede'
       },
       scene: {
         yaxis: {
@@ -162,8 +199,8 @@ export class Dinamics extends Component {
           eye
         }
       },
-      width: 1000,
-      height: 500,
+      width: 850,
+      height: 400,
       margin: {
         l: 0,
         r: 0,
@@ -175,22 +212,43 @@ export class Dinamics extends Component {
     const config = {
       displayModeBar: false,
       scrollZoom: false,
-      responsive: true
+      // responsive: true
     };
-    
+
     const Btn = () => (
-      <div className='cont-btn'>
-        <button className='btn margin' onClick={this.state1}>General view</button>
-        <button className='btn margin' onClick={this.state2}>ATOMs / %</button>
-        <button className='btn margin' onClick={this.state3}>ATOMs / discount</button>
-    </div>
-    )
+      <div className="cont-btn">
+        <button
+          className={`btn-view margin ${
+            activebtn === 'general' ? 'activebtn' : ''
+          }`}
+          onClick={this.state1}
+        >
+          General
+        </button>
+        <button
+          className={`btn-view margin ${
+            activebtn === 'share' ? 'activebtn' : ''
+          }`}
+          onClick={this.state2}
+        >
+          Share
+        </button>
+        <button
+          className={`btn-view margin ${
+            activebtn === 'discount' ? 'activebtn' : ''
+          }`}
+          onClick={this.state3}
+        >
+          Discount
+        </button>
+      </div>
+    );
 
     return (
-<div>
-  <Btn />
+      <div className="container-dinamics">
         <Plotly data={[data]} layout={layout} config={config} />
-        </div>
+        <Btn />
+      </div>
     );
   }
 }
